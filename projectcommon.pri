@@ -28,3 +28,14 @@ defineReplace(targetName) {
    isEmpty(RET):RET = $$LIBRARY_NAME
    return($$RET)
 }
+
+# Deal with internal libraries used in this project.
+for(APPLIB, APPLIBS) {
+    hINCPATH = $$PROJECT_SOURCE_TREE/src/libs/$$APPLIB $$PROJECT_SOURCE_TREE/src/libs
+
+    INCLUDEPATH -= $$hINCPATH
+    INCLUDEPATH = $$hINCPATH $$INCLUDEPATH
+
+    LIBS *= -L$$PROJECT_LIB_PATH
+    LIBS *= -l$$targetName($$APPLIB)
+}
