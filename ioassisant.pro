@@ -1,11 +1,3 @@
-QT += widgets
+TEMPLATE = subdirs
 
-SOURCES += \
-    main.cpp \
-    mainwindow.cpp
-
-FORMS += \
-    mainwindow.ui
-
-HEADERS += \
-    mainwindow.h
+SUBDIRS = src
