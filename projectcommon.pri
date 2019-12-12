@@ -16,3 +16,15 @@ PROJECT_DATA_PATH = $$PROJECT_BUILD_TREE/share
 
 !isEqual(PROJECT_SOURCE_TREE, $$PROJECT_BUILD_TREE): copydata = 1
 
+defineReplace(targetName) {
+   unset(LIBRARY_NAME)
+   LIBRARY_NAME = $$1
+   CONFIG(debug, debug|release) {
+      !debug_and_release|build_pass {
+          mac:RET = $$member(LIBRARY_NAME, 0)_debug
+              else:win32:RET = $$member(LIBRARY_NAME, 0)d
+      }
+   }
+   isEmpty(RET):RET = $$LIBRARY_NAME
+   return($$RET)
+}
