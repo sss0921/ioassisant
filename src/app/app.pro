@@ -1,9 +1,9 @@
 TEMPLATE = app
 
-include(../../ioassistant.pri)
+include(../../projectcommon.pri)
 
-TARGET = $$IOASSISTANT_APP_TARGET
-DESTDIR = $$IOASSISTANT_BIN_PATH
+TARGET = $$PROJECT_APP_TARGET
+DESTDIR = $$PROJECT_BIN_PATH
 
 QT += widgets
 
